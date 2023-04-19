@@ -1,0 +1,74 @@
+body {
+    background: #060642;
+/* background: linear-gradient(321deg, rgba(10,10,37,1) 4%, rgba(8,8,109,1) 48%, rgba(0,212,255,1) 100%, rgba(4,132,202,1) 100%); */
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.game-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100vw;
+}
+
+canvas {
+    border: 4px solid #000000;
+    border-radius: 8px;
+    background-color: #a5e1e9;
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.78);
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+}
+
+button {
+    background-color: #06425e;
+    border-radius: 8px;
+    border-color: #25d9e6;
+    font-family: inherit;
+    margin: 0;
+    padding: 5px 20px;
+    width: 100px;
+    color: #ffffff;
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.78);
+}
+
+button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.messages {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 460px;
+}
+
+p {
+    display: block;
+    margin: 0;
+    width: 100%;
+}
+
+@media (max-width: 440px) {
+    button {
+        margin-top: 25px;
+    }
+
+    #up,
+    #down {
+        margin-left: 100%;
+        margin-right: 100%;
+    }
+}
