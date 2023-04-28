@@ -8,14 +8,15 @@
     <title>Juego de calaveras</title>
 </head>
 <body>
-    <div class="game-container">
+    <div class="game-container" id="container">
         <canvas id="game"></canvas>
-        <div class="btns">
-            <button id="up">Arriba</button>
-            <button id="left">Izquierda</button>
-            <button id="right">Derecha</button>
-            <button id="down">Abajo</button>
-        </div>
+            <div class="btns" id="botones">
+                <button id="up">Arriba</button>
+                <button id="left">Izquierda</button>
+                <button id="right">Derecha</button>
+                <button id="down">Abajo</button>
+            </div>
+            <div id="volver" style="display:none"><button id="reiniciar" class="begin">Volver a jugar</button></div>
         <div class="messages">
             <p>
                 Vidas:<spand id="lives"></spand>

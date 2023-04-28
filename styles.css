@@ -11,7 +11,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
     height: 100vh;
     width: 100vw;
 }
@@ -21,6 +21,7 @@ canvas {
     border-radius: 8px;
     background-color: #a5e1e9;
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.78);
+    margin-bottom: 10px;
 }
 
 .btns {
@@ -30,7 +31,20 @@ canvas {
     margin: 0 auto;
     width: 100%;
 }
-
+.new-button{
+    display: none;
+}
+.begin{
+    background-color: #06425e;
+    border-radius: 8px;
+    border-color: #25d9e6;
+    font-family: inherit;
+    margin: 0;
+    padding: 5px 20px;
+    width: 100px;
+    color: #ffffff;
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.78);
+}
 button {
     background-color: #06425e;
     border-radius: 8px;

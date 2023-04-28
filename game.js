@@ -7,6 +7,9 @@ const down = document.querySelector('#down');
 const livesSpan = document.querySelector('#lives');
 const timeSpan = document.querySelector ('#time');
 const recordSpan = document.querySelector('#record');
+const botones = document.querySelector('#botones');
+const volver = document.querySelector('#volver');
+const btnVolver = document.querySelector('#reiniciar');
 
 window.addEventListener('load',setCanvasSize);
 window.addEventListener('resize', setCanvasSize);
@@ -89,14 +92,21 @@ function startGame(){
     // }
 }
 
+btnVolver.addEventListener('click',volverJugar);
+
 function movePlayer(){
     game.fillText(emojis['PLAYER'],positionPlayer.x*elementSize,positionPlayer.y*elementSize);
     if(positionPlayer.x!=undefined && colRowMap[positionPlayer.y-1][positionPlayer.x]==='X'){
+        // game.fillText(emojis['BOMB_COLLISION'],(positionPlayer.x)*elementSize,(positionPlayer.y)*elementSize);
+        let explo = setInterval(game.fillText(emojis['BOMB_COLLISION'],(positionPlayer.x)*elementSize,(positionPlayer.y)*elementSize),0);
         failLevel();
+        setTimeout(clearInterval(explo),50000);
         startGame();
     }else if(positionPlayer.x!=undefined && colRowMap[positionPlayer.y-1][positionPlayer.x]==='I'){
         nextLevel();
-        startGame();
+        if(mapa){
+            startGame();
+        }
     }   
 }
 
@@ -122,7 +132,21 @@ function finishGame(){
     console.log("Finalizaste el juego.");
     clearInterval(timeInterval);
     showRecord();
+    game.clearRect(0,0, canvasSize,canvasSize);
+    game.font = "bold 40px serif";
+    game.fillText('Ganaste!!!',3.5*elementSize,2*elementSize);
+    game.font = "bold 100px serif";
+    game.fillText(emojis['WIN'],4*elementSize,canvasSize/2,2*elementSize);
+    game.font = "bold 20px serif";
+    game.fillText('El tiempo que hiciste fue '+`0${timePlayer.hours}`.slice(-2)+':' + `0${timePlayer.minutes}`.slice(-2) + ':'+`0${timePlayer.seconds}`.slice(-2)+':'+`0${timePlayer.cenSeconds}`.slice(-2),2*elementSize,7*elementSize);
+    botones.classList.add('new-button');
+    volver.removeAttribute('style');
+
     return;
+}
+
+function volverJugar(){
+    location.reload();
 }
 
 function showRecord(){
@@ -137,7 +161,7 @@ function showRecord(){
             if(timePlayer.minutes<getObject.minutes){
                 localStorage.setItem('Record',JSON.stringify(timePlayer));
             }else if(timePlayer.minutes==getObject.minutes){
-                if(timePlayer.seconds<getObject.seconds&&timePlayer.cenSeconds<=getObject.cenSeconds){
+                if(timePlayer.seconds<getObject.seconds){
                     localStorage.setItem('Record',JSON.stringify(timePlayer));
                 }else if(timePlayer.seconds==getObject.seconds){
                     if(timePlayer.cenSeconds<getObject.cenSeconds){
